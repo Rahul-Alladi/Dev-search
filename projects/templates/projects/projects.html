@@ -2,6 +2,19 @@
 {% block content %}
     
 <h1>Projects Template</h1>
+
+<p>hello you are on the {{page}} page</p> <!-- for dynamic content in a page -->
+
+{% if number > 10 %} <!-- you can even write logic in a page -->
+<p>number is greater than 10</p>
+
+{% elif number == 10 %}
+<p>number is 10</p>
+
+{% else %}
+<p>number is less than 10 </p>
+{% endif %}
+
 <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.
      Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,
       when an unknown printer took a galley of type and scrambled it to make a type specimen book.
@@ -10,4 +23,14 @@
          of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop
           publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
 
+
+<hr>
+<h1> Projects list</h1>
+
+<ul>
+{% for project in projects %}
+     <li>Title-> <a href="{% url 'project' project.id %}">{{project.title}}</a> -- {{project.description}}</li>
+{% endfor %}
+
+</ul>
 {% endblock content %}
